@@ -1,0 +1,522 @@
+Paso 1. Obtener los id de las organizaciones.
+Request status:  200
++--------------------+---------------------------+
+|         ID         |        ORGANIZACION       |
++--------------------+---------------------------+
+|       681155       |           DeLab           |
+| 575334852396583536 | TNF - The Network Factory |
+| 573083052582914605 |       Jacks_test_net      |
+|       549236       |       DevNet Sandbox      |
+| 575334852396583264 |      My organization      |
+| 575334852396583237 |            Xirg           |
+| 575334852396583213 |       "New Network"       |
+| 573083052582914233 |          Test_org         |
+| 575334852396583197 |        The New Org        |
+| 575334852396583158 |          Testlab          |
+| 575334852396583134 |           Wotan           |
+| 575334852396583133 |         test-test         |
+| 575334852396583131 |          thienbao         |
+| 575334852396583128 |          trungheo         |
+| 575334852396583093 |          The Org          |
+| 575334852396583071 |          PM_Test          |
+| 575334852396583051 |           trung           |
+| 575334852396583031 |      My organization      |
+| 575334852396582986 |      DevNet Test Org      |
+| 575334852396582973 |      DevNet Test Org      |
+| 575334852396582756 |     Personal.Lekhnath     |
+| 575334852396582755 |      My organization      |
+| 575334852396582738 |      My organization      |
+| 575334852396582684 |            SVR            |
+| 566327653141842188 |        DevNetAssoc        |
+| 575334852396582591 |    Ftreqah organization   |
+|       52636        |    Forest City - Other    |
+|       865776       |     Cisco Live US 2019    |
+|       463308       |            dev            |
++--------------------+---------------------------+
+Paso 2. Obtener las redes de una organización a partir de la elección de un id del servicio anterior.
+----------------------------------------------------------------------------------------------------
+El id de la organizacion elegida es:  681155  y el nombre:  DeLab
+----------------------------------------------------------------------------------------------------
++----------------------+-----------------+-----------------+
+|      NETWORK ID      | ORGANIZACION ID |       NAME      |
++----------------------+-----------------+-----------------+
+| L_566327653141843049 |      681155     |      Lyoli      |
+| L_566327653141846927 |      681155     | Vegas Apartment |
+| L_566327653141856854 |      681155     |   DNEAlertsNet  |
+| L_783626335162466320 |      681155     |    DevNetLab    |
+| L_783626335162466514 |      681155     |    DevNetLab2   |
+| L_783626335162466515 |      681155     |    DevNetLab3   |
+| N_566327653141899127 |      681155     |      Nolan      |
+| N_566327653141902646 |      681155     |    Lyoli MDM    |
++----------------------+-----------------+-----------------+
+Paso 3.Obtener los dispositivos de la red pasándole como parámetro el  networkid  obtenido en el paso anterior.
+----------------------------------------------------------------------------------------------------
+El networkid de la red elegida es:  L_566327653141843049  y el nombre de la red:  Lyoli
+----------------------------------------------------------------------------------------------------
++------------+--------------------------------+-------------------+----------------+
+|   MODEL    |            FIRMWARE            |    MAC ADDRESS    |     SERIAL     |
++------------+--------------------------------+-------------------+----------------+
+|   MX250    |          wired-15-44           | ac:17:c8:24:4f:68 | Q2SW-SWQ2-HZ9L |
+| MS250-48FP |          switch-12-28          | 34:56:fe:88:c2:f8 | Q2QW-W2W4-MCNR |
+|  MS220-8P  |          switch-12-28          | e0:55:3d:d2:48:3f | Q2HP-WEUW-2PQD |
+|  MS220-8P  |          switch-12-28          | e0:55:3d:d2:4b:4c | Q2HP-225A-XA5C |
+|    MR52    |        wireless-27-7-1         | e0:55:3d:c0:76:f4 | Q2LD-GYL3-KEHX |
+|    MR52    | Not running configured version | e0:55:3d:c0:5e:2e | Q2LD-AN9B-S6AJ |
+|    MR84    |        wireless-27-7-1         | e0:55:3d:10:5e:b2 | Q2EK-UKGM-XSD9 |
+|    MR52    |        wireless-27-7-1         | e0:55:3d:c0:72:d8 | Q2LD-ZWCZ-UA77 |
+|    MR52    |        wireless-27-7-1         | e0:55:3d:c0:73:56 | Q2LD-3Y7V-7Y2X |
++------------+--------------------------------+-------------------+----------------+
+Paso 4. Obtener datos de la  red con el networkid.
+{
+    "id": "L_566327653141843049",
+    "organizationId": "681155",
+    "productTypes": [
+        "appliance",
+        "switch",
+        "wireless"
+    ],
+    "url": "https://n392.meraki.com/Lyoli-camera/n/kmekocg/manage/usage/list",
+    "name": "Lyoli",
+    "timeZone": "America/New_York",
+    "enrollmentString": null,
+    "tags": [],
+    "notes": ""
+}
+----------------------------------------------------------------------------------------------------
+Paso 5. Obtener infomación de un dispositivo con el serial id.
+----------------------------------------------------------------------------------------------------
+El serial id es:  Q2SW-SWQ2-HZ9L
+----------------------------------------------------------------------------------------------------
+{
+    "lat": 37.4180951010362,
+    "lng": -122.098531723022,
+    "address": "",
+    "serial": "Q2SW-SWQ2-HZ9L",
+    "mac": "ac:17:c8:24:4f:68",
+    "wan1Ip": "192.168.1.74",
+    "wan2Ip": null,
+    "tags": [
+        "recently-added"
+    ],
+    "url": "https://n392.meraki.com/Lyoli-appliance/n/6X278ag/manage/nodes/new_list/189218142048104",
+    "networkId": "L_566327653141843049",
+    "name": "BigCat",
+    "model": "MX250",
+    "firmware": "wired-15-44",
+    "floorPlanId": null
+}
+----------------------------------------------------------------------------------------------------
+Paso 6.Obtener información del SSID para el network ID
+[
+    {
+        "number": 0,
+        "name": "Lyoli",
+        "enabled": true,
+        "splashPage": "None",
+        "ssidAdminAccessible": false,
+        "authMode": "psk",
+        "psk": "Tac0s7426P1zza",
+        "dot11w": {
+            "enabled": false,
+            "required": false
+        },
+        "dot11r": {
+            "enabled": false,
+            "adaptive": false
+        },
+        "encryptionMode": "wpa",
+        "wpaEncryptionMode": "WPA1 and WPA2",
+        "ipAssignmentMode": "Bridge mode",
+        "useVlanTagging": false,
+        "minBitrate": 11,
+        "bandSelection": "Dual band operation",
+        "perClientBandwidthLimitUp": 0,
+        "perClientBandwidthLimitDown": 0,
+        "perSsidBandwidthLimitUp": 0,
+        "perSsidBandwidthLimitDown": 0,
+        "mandatoryDhcpEnabled": false,
+        "lanIsolationEnabled": false,
+        "visible": true,
+        "availableOnAllAps": true,
+        "availabilityTags": []
+    },
+    {
+        "number": 1,
+        "name": "Lyoli Outdoor",
+        "enabled": false,
+        "splashPage": "None",
+        "ssidAdminAccessible": false,
+        "authMode": "psk",
+        "psk": "Tac0s7426P1zza",
+        "dot11w": {
+            "enabled": false,
+            "required": false
+        },
+        "dot11r": {
+            "enabled": false,
+            "adaptive": false
+        },
+        "encryptionMode": "wpa",
+        "wpaEncryptionMode": "WPA1 and WPA2",
+        "ipAssignmentMode": "Bridge mode",
+        "useVlanTagging": false,
+        "minBitrate": 11,
+        "bandSelection": "Dual band operation",
+        "perClientBandwidthLimitUp": 0,
+        "perClientBandwidthLimitDown": 0,
+        "perSsidBandwidthLimitUp": 0,
+        "perSsidBandwidthLimitDown": 0,
+        "mandatoryDhcpEnabled": false,
+        "lanIsolationEnabled": false,
+        "visible": true,
+        "availableOnAllAps": true,
+        "availabilityTags": []
+    },
+    {
+        "number": 2,
+        "name": "Captive Portal Demo",
+        "enabled": false,
+        "splashPage": "Click-through splash page",
+        "ssidAdminAccessible": false,
+        "authMode": "psk",
+        "psk": "waytogodevs",
+        "dot11w": {
+            "enabled": false,
+            "required": false
+        },
+        "dot11r": {
+            "enabled": false,
+            "adaptive": false
+        },
+        "encryptionMode": "wpa",
+        "wpaEncryptionMode": "WPA2 only",
+        "ipAssignmentMode": "Bridge mode",
+        "useVlanTagging": false,
+        "adminSplashUrl": "https://afddd0244900.ngrok.io/click",
+        "splashTimeout": "30 minutes",
+        "walledGardenEnabled": true,
+        "walledGardenRanges": [
+            "*.ngrok.io"
+        ],
+        "minBitrate": 11,
+        "bandSelection": "5 GHz band only",
+        "perClientBandwidthLimitUp": 0,
+        "perClientBandwidthLimitDown": 0,
+        "perSsidBandwidthLimitUp": 0,
+        "perSsidBandwidthLimitDown": 0,
+        "mandatoryDhcpEnabled": false,
+        "lanIsolationEnabled": false,
+        "visible": true,
+        "availableOnAllAps": true,
+        "availabilityTags": []
+    },
+    {
+        "number": 3,
+        "name": "KTV",
+        "enabled": true,
+        "splashPage": "None",
+        "ssidAdminAccessible": false,
+        "authMode": "psk",
+        "psk": "boomshakalaka",
+        "dot11w": {
+            "enabled": false,
+            "required": false
+        },
+        "dot11r": {
+            "enabled": false,
+            "adaptive": false
+        },
+        "encryptionMode": "wpa",
+        "wpaEncryptionMode": "WPA2 only",
+        "ipAssignmentMode": "Bridge mode",
+        "useVlanTagging": false,
+        "minBitrate": 11,
+        "bandSelection": "Dual band operation",
+        "perClientBandwidthLimitUp": 0,
+        "perClientBandwidthLimitDown": 0,
+        "perSsidBandwidthLimitUp": 0,
+        "perSsidBandwidthLimitDown": 0,
+        "mandatoryDhcpEnabled": false,
+        "lanIsolationEnabled": false,
+        "visible": false,
+        "availableOnAllAps": false,
+        "availabilityTags": [
+            "ktv"
+        ]
+    },
+    {
+        "number": 4,
+        "name": "LTV",
+        "enabled": true,
+        "splashPage": "None",
+        "ssidAdminAccessible": false,
+        "authMode": "psk",
+        "psk": "tvconnect",
+        "dot11w": {
+            "enabled": false,
+            "required": false
+        },
+        "dot11r": {
+            "enabled": false,
+            "adaptive": false
+        },
+        "encryptionMode": "wpa",
+        "wpaEncryptionMode": "WPA1 and WPA2",
+        "ipAssignmentMode": "Bridge mode",
+        "useVlanTagging": false,
+        "minBitrate": 1,
+        "bandSelection": "Dual band operation",
+        "perClientBandwidthLimitUp": 0,
+        "perClientBandwidthLimitDown": 0,
+        "perSsidBandwidthLimitUp": 0,
+        "perSsidBandwidthLimitDown": 0,
+        "mandatoryDhcpEnabled": false,
+        "lanIsolationEnabled": false,
+        "visible": false,
+        "availableOnAllAps": false,
+        "availabilityTags": [
+            "ltv"
+        ]
+    },
+    {
+        "number": 5,
+        "name": "testv",
+        "enabled": false,
+        "splashPage": "None",
+        "ssidAdminAccessible": false,
+        "authMode": "open",
+        "ipAssignmentMode": "NAT mode",
+        "adultContentFilteringEnabled": false,
+        "dnsRewrite": {
+            "enabled": false,
+            "dnsCustomNameservers": []
+        },
+        "minBitrate": 11,
+        "bandSelection": "Dual band operation",
+        "perClientBandwidthLimitUp": 0,
+        "perClientBandwidthLimitDown": 0,
+        "perSsidBandwidthLimitUp": 0,
+        "perSsidBandwidthLimitDown": 0,
+        "mandatoryDhcpEnabled": false,
+        "visible": true,
+        "availableOnAllAps": true,
+        "availabilityTags": []
+    },
+    {
+        "number": 6,
+        "name": "Unconfigured SSID 7",
+        "enabled": false,
+        "splashPage": "None",
+        "ssidAdminAccessible": false,
+        "authMode": "open",
+        "ipAssignmentMode": "NAT mode",
+        "adultContentFilteringEnabled": false,
+        "dnsRewrite": {
+            "enabled": false,
+            "dnsCustomNameservers": []
+        },
+        "minBitrate": 11,
+        "bandSelection": "Dual band operation",
+        "perClientBandwidthLimitUp": 0,
+        "perClientBandwidthLimitDown": 0,
+        "perSsidBandwidthLimitUp": 0,
+        "perSsidBandwidthLimitDown": 0,
+        "mandatoryDhcpEnabled": false,
+        "visible": true,
+        "availableOnAllAps": true,
+        "availabilityTags": []
+    },
+    {
+        "number": 7,
+        "name": "Unconfigured SSID 8",
+        "enabled": false,
+        "splashPage": "None",
+        "ssidAdminAccessible": false,
+        "authMode": "open",
+        "ipAssignmentMode": "NAT mode",
+        "adultContentFilteringEnabled": false,
+        "dnsRewrite": {
+            "enabled": false,
+            "dnsCustomNameservers": []
+        },
+        "minBitrate": 11,
+        "bandSelection": "Dual band operation",
+        "perClientBandwidthLimitUp": 0,
+        "perClientBandwidthLimitDown": 0,
+        "perSsidBandwidthLimitUp": 0,
+        "perSsidBandwidthLimitDown": 0,
+        "mandatoryDhcpEnabled": false,
+        "visible": true,
+        "availableOnAllAps": true,
+        "availabilityTags": []
+    },
+    {
+        "number": 8,
+        "name": "Unconfigured SSID 9",
+        "enabled": false,
+        "splashPage": "None",
+        "ssidAdminAccessible": false,
+        "authMode": "open",
+        "ipAssignmentMode": "NAT mode",
+        "adultContentFilteringEnabled": false,
+        "dnsRewrite": {
+            "enabled": false,
+            "dnsCustomNameservers": []
+        },
+        "minBitrate": 11,
+        "bandSelection": "Dual band operation",
+        "perClientBandwidthLimitUp": 0,
+        "perClientBandwidthLimitDown": 0,
+        "perSsidBandwidthLimitUp": 0,
+        "perSsidBandwidthLimitDown": 0,
+        "mandatoryDhcpEnabled": false,
+        "visible": true,
+        "availableOnAllAps": true,
+        "availabilityTags": []
+    },
+    {
+        "number": 9,
+        "name": "Unconfigured SSID 10",
+        "enabled": false,
+        "splashPage": "None",
+        "ssidAdminAccessible": false,
+        "authMode": "open",
+        "ipAssignmentMode": "NAT mode",
+        "adultContentFilteringEnabled": false,
+        "dnsRewrite": {
+            "enabled": false,
+            "dnsCustomNameservers": []
+        },
+        "minBitrate": 11,
+        "bandSelection": "Dual band operation",
+        "perClientBandwidthLimitUp": 0,
+        "perClientBandwidthLimitDown": 0,
+        "perSsidBandwidthLimitUp": 0,
+        "perSsidBandwidthLimitDown": 0,
+        "mandatoryDhcpEnabled": false,
+        "visible": true,
+        "availableOnAllAps": true,
+        "availabilityTags": []
+    },
+    {
+        "number": 10,
+        "name": "Unconfigured SSID 11",
+        "enabled": false,
+        "splashPage": "None",
+        "ssidAdminAccessible": false,
+        "authMode": "open",
+        "ipAssignmentMode": "NAT mode",
+        "adultContentFilteringEnabled": false,
+        "dnsRewrite": {
+            "enabled": false,
+            "dnsCustomNameservers": []
+        },
+        "minBitrate": 11,
+        "bandSelection": "Dual band operation",
+        "perClientBandwidthLimitUp": 0,
+        "perClientBandwidthLimitDown": 0,
+        "perSsidBandwidthLimitUp": 0,
+        "perSsidBandwidthLimitDown": 0,
+        "mandatoryDhcpEnabled": false,
+        "visible": true,
+        "availableOnAllAps": true,
+        "availabilityTags": []
+    },
+    {
+        "number": 11,
+        "name": "Unconfigured SSID 12",
+        "enabled": false,
+        "splashPage": "None",
+        "ssidAdminAccessible": false,
+        "authMode": "open",
+        "ipAssignmentMode": "NAT mode",
+        "adultContentFilteringEnabled": false,
+        "dnsRewrite": {
+            "enabled": false,
+            "dnsCustomNameservers": []
+        },
+        "minBitrate": 11,
+        "bandSelection": "Dual band operation",
+        "perClientBandwidthLimitUp": 0,
+        "perClientBandwidthLimitDown": 0,
+        "perSsidBandwidthLimitUp": 0,
+        "perSsidBandwidthLimitDown": 0,
+        "mandatoryDhcpEnabled": false,
+        "visible": true,
+        "availableOnAllAps": true,
+        "availabilityTags": []
+    },
+    {
+        "number": 12,
+        "name": "Unconfigured SSID 13",
+        "enabled": false,
+        "splashPage": "None",
+        "ssidAdminAccessible": false,
+        "authMode": "open",
+        "ipAssignmentMode": "NAT mode",
+        "adultContentFilteringEnabled": false,
+        "dnsRewrite": {
+            "enabled": false,
+            "dnsCustomNameservers": []
+        },
+        "minBitrate": 11,
+        "bandSelection": "Dual band operation",
+        "perClientBandwidthLimitUp": 0,
+        "perClientBandwidthLimitDown": 0,
+        "perSsidBandwidthLimitUp": 0,
+        "perSsidBandwidthLimitDown": 0,
+        "mandatoryDhcpEnabled": false,
+        "visible": true,
+        "availableOnAllAps": true,
+        "availabilityTags": []
+    },
+    {
+        "number": 13,
+        "name": "Unconfigured SSID 14",
+        "enabled": false,
+        "splashPage": "None",
+        "ssidAdminAccessible": false,
+        "authMode": "open",
+        "ipAssignmentMode": "NAT mode",
+        "adultContentFilteringEnabled": false,
+        "dnsRewrite": {
+            "enabled": false,
+            "dnsCustomNameservers": []
+        },
+        "minBitrate": 11,
+        "bandSelection": "Dual band operation",
+        "perClientBandwidthLimitUp": 0,
+        "perClientBandwidthLimitDown": 0,
+        "perSsidBandwidthLimitUp": 0,
+        "perSsidBandwidthLimitDown": 0,
+        "mandatoryDhcpEnabled": false,
+        "visible": true,
+        "availableOnAllAps": true,
+        "availabilityTags": []
+    },
+    {
+        "number": 14,
+        "name": "Unconfigured SSID 15",
+        "enabled": false,
+        "splashPage": "None",
+        "ssidAdminAccessible": false,
+        "authMode": "open",
+        "ipAssignmentMode": "NAT mode",
+        "adultContentFilteringEnabled": false,
+        "dnsRewrite": {
+            "enabled": false,
+            "dnsCustomNameservers": []
+        },
+        "minBitrate": 11,
+        "bandSelection": "Dual band operation",
+        "perClientBandwidthLimitUp": 0,
+        "perClientBandwidthLimitDown": 0,
+        "perSsidBandwidthLimitUp": 0,
+        "perSsidBandwidthLimitDown": 0,
+        "mandatoryDhcpEnabled": false,
+        "visible": true,
+        "availableOnAllAps": true,
+        "availabilityTags": []
+    }
+]
+----------------------------------------------------------------------------------------------------
